@@ -1,5 +1,6 @@
 package ipca.com.noteappca.feature_note.presentation.add_edit_note
 
+import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -68,7 +69,7 @@ fun AddEditNoteScreen(
                 onClick = { viewModel.onEvent(AddEditNoteEvent.SaveNote) }
             ) {
                 Icon(
-                    imageVector = Icons.Default.Save,
+                    imageVector = Icons.Default.Done,
                     contentDescription = "Save note"
                 )
             }

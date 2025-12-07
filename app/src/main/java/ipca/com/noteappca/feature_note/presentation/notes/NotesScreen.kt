@@ -25,6 +25,7 @@ import ipca.com.noteappca.feature_note.presentation.notes.components.NodeItem
 import ipca.com.noteappca.feature_note.presentation.notes.components.OrderSection
 import ipca.com.noteappca.feature_note.presentation.notes.viewmodels.NotesEvent
 import ipca.com.noteappca.feature_note.presentation.notes.viewmodels.NotesViewModel
+import ipca.com.noteappca.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -99,7 +100,10 @@ fun NotesScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-                                // Navigate to note detail
+                                navController.navigate(
+                                    Screen.AddEditNoteScreen.route +
+                                            "?noteId=${note.id}&noteColor=${note.color}"
+                                )
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
