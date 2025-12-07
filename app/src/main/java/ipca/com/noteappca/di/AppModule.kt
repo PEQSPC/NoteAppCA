@@ -9,6 +9,10 @@ import dagger.hilt.components.SingletonComponent
 import ipca.com.noteappca.feature_note.data.data_source.NoteDatabase
 import ipca.com.noteappca.feature_note.data.repository.NoteRepositoryImpl
 import ipca.com.noteappca.feature_note.domain.repository.NoteRepository
+import ipca.com.noteappca.feature_note.domain.use_case.AddNoteUseCase
+import ipca.com.noteappca.feature_note.domain.use_case.DeleteNoteUseCase
+import ipca.com.noteappca.feature_note.domain.use_case.GetNotesUseCase
+import ipca.com.noteappca.feature_note.domain.use_case.NoteUseCases
 import javax.inject.Singleton
 
 
@@ -32,5 +36,17 @@ object AppModule{
     fun provideNoteRepository(db: NoteDatabase): NoteRepository {
         return NoteRepositoryImpl(db.noteDao)
     }
+
+    @Provides
+    @Singleton
+    fun provideNoteUseCases(repository: NoteRepository): NoteUseCases {
+        return NoteUseCases(
+            getNotesUseCase = GetNotesUseCase(repository),
+            deleteNoteUseCase = DeleteNoteUseCase(repository),
+            addNoteUseCase = AddNoteUseCase(repository)
+
+        )
+    }
+
 
 }
