@@ -11,6 +11,7 @@ import ipca.com.noteappca.feature_note.data.repository.NoteRepositoryImpl
 import ipca.com.noteappca.feature_note.domain.repository.NoteRepository
 import ipca.com.noteappca.feature_note.domain.use_case.AddNoteUseCase
 import ipca.com.noteappca.feature_note.domain.use_case.DeleteNoteUseCase
+import ipca.com.noteappca.feature_note.domain.use_case.GetNoteUseCase
 import ipca.com.noteappca.feature_note.domain.use_case.GetNotesUseCase
 import ipca.com.noteappca.feature_note.domain.use_case.NoteUseCases
 import javax.inject.Singleton
@@ -43,7 +44,8 @@ object AppModule{
         return NoteUseCases(
             getNotesUseCase = GetNotesUseCase(repository),
             deleteNoteUseCase = DeleteNoteUseCase(repository),
-            addNoteUseCase = AddNoteUseCase(repository)
+            addNoteUseCase = AddNoteUseCase(repository),
+            getNoteUseCase = GetNoteUseCase(repository)
 
         )
     }
